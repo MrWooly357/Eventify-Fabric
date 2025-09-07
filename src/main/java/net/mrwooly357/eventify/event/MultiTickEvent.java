@@ -5,7 +5,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.mrwooly357.eventify.event.context.EventContext;
 import net.mrwooly357.eventify.registry.EventifyRegistries;
-import net.mrwooly357.wool.util.data.UnifiedData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +62,8 @@ public abstract class MultiTickEvent<C extends EventContext> extends Event<C> {
         listeners.add(listener);
     }
 
-    protected <E extends MultiTickEvent<C>> void triggerListeners(Listener.Trigger trigger, C context, E event, UnifiedData data) {
-        listeners.forEach(listener -> listener.onTriggered(trigger, context, event, data));
+    protected <E extends MultiTickEvent<C>> void triggerListeners(Listener.Trigger trigger, C context, E event, Object... args) {
+        listeners.forEach(listener -> listener.onTriggered(trigger, context, event, args));
     }
 
     public NbtCompound serialize(C context) {
@@ -180,7 +179,7 @@ public abstract class MultiTickEvent<C extends EventContext> extends Event<C> {
         protected Listener() {}
 
 
-        protected void onTriggered(Trigger trigger, C context, E event, UnifiedData data) {}
+        protected void onTriggered(Trigger trigger, C context, E event, Object... args) {}
 
         protected void onStateChanged(C context, E event, State oldState, State newState) {}
 

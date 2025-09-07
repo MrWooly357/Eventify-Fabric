@@ -5,7 +5,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.mrwooly357.eventify.event.EventType;
 import net.mrwooly357.eventify.event.MultiTickEvent;
 import net.mrwooly357.eventify.event.context.EventContext;
-import net.mrwooly357.eventify.registry.EventifyRegistries;
 
 import java.util.ArrayList;
 import java.util.List;

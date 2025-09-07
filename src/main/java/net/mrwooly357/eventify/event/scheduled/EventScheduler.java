@@ -7,7 +7,7 @@ import net.mrwooly357.eventify.event.MultiTickEvent;
 import net.mrwooly357.eventify.event.SingleTickEvent;
 import net.mrwooly357.eventify.event.context.EventContext;
 import net.mrwooly357.eventify.event.manager.EventManager;
-import net.mrwooly357.wool.util.data.Data;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +33,9 @@ public final class EventScheduler {
     @SuppressWarnings("unchecked")
     private static <C extends EventContext, E extends Event<C>> boolean process(EventManager manager, ScheduledEvent<?, ?> scheduledEvent, ServerWorld world) {
         ScheduledEvent<C, E> castedScheduledEvent = (ScheduledEvent<C, E>) scheduledEvent;
-        Data<Boolean> result = Data.of(false);
+        Result<Boolean> result = Result.of(false);
         castedScheduledEvent.getType(world).ifPresent(type -> {
             E event = type.createEvent(world);
-
             if (event instanceof SingleTickEvent<?> singleTickEvent)
                 manager.emitEvent(singleTickEvent);
             else if (event instanceof MultiTickEvent<?> multiTickEvent)
@@ -45,7 +44,7 @@ public final class EventScheduler {
             result.set(true);
         });
 
-        return result.getOrThrow(new RuntimeException("Data doesn't contain a proper value!"));
+        return result.get();
     }
 
     public <C extends EventContext, E extends Event<C>> void scheduleEvent(ScheduledEvent<C, E> event) {
@@ -68,5 +67,33 @@ public final class EventScheduler {
 
         for (int i = 0; i < size; i++)
             scheduleEvent(ScheduledEvent.deserialize(nbt.getCompound(String.valueOf(i))));
+    }
+
+
+    private static final class Result<T> {
+
+        @Nullable
+        private T value;
+
+        private Result(@Nullable T value) {
+            this.value = value;
+        }
+
+
+        private static <T> Result<T> of() {
+            return of(null);
+        }
+
+        private static <T> Result<T> of(@Nullable T value) {
+            return new Result<>(value);
+        }
+
+        private T get() {
+            return value;
+        }
+
+        private void set(@Nullable T value) {
+            this.value = value;
+        }
     }
 }
