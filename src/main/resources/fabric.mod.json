@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "eventify",
+  "version": "${version}",
+  "name": "Eventify",
+  "description": "A library to create and emit in-world events in a simple manner.",
+  "authors": [
+    "MrWooly357"
+  ],
+  "contact": {
+    "homepage": "",
+    "sources": "",
+    "issues": ""
+  },
+  "license": "MIT",
+  "icon": "assets/eventify/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.mrwooly357.eventify.Eventify"
+    ]
+  },
+  "mixins": [
+    "eventify.mixins.json"
+  ],
+  "accessWidener": "eventify.accessWidener",
+  "depends": {
+    "fabricloader": ">=0.17.2",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": ">=0.116.6+1.21.1"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
