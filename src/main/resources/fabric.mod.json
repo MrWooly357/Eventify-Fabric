@@ -8,9 +8,9 @@
     "MrWooly357"
   ],
   "contact": {
-    "homepage": "",
-    "sources": "",
-    "issues": ""
+    "homepage": "https://modrinth.com/project/eventify",
+    "sources": "https://github.com/MrWooly357/Eventify-Fabric",
+    "issues": "https://github.com/MrWooly357/Eventify-Fabric/issues"
   },
   "license": "MIT",
   "icon": "assets/eventify/icon.png",
