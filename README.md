@@ -1,3 +1,3 @@
-Eventify is a library meant to help developers easily create in-world events and related things.
+Eventify is a library designed to help developers easily create in-game events and related things.
 
-The mod does nothing on its own so download only when a mod you're using depends on it.
+The mod itself does nothing, so only download it if the mod you're using depends on it.
