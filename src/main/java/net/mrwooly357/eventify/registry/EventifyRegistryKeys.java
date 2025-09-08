@@ -11,7 +11,7 @@ public final class EventifyRegistryKeys {
 
     public static final RegistryKey<Registry<EventType<?, ?>>> EVENT_TYPE = create("event_type");
     public static final RegistryKey<Registry<MultiTickEvent.Deserializer<?, ?>>> MULTI_TICK_EVENT_DESERIALIZER = create("multi_tick_event_deserializer");
-    public static final RegistryKey<Registry<MultiTickEvent.Listener.Deserializer<?, ?, ?>>> MULTI_TICK_EVENT_LISTENER_DESERIALIZER = create("multi_tick_event_Deserializer");
+    public static final RegistryKey<Registry<MultiTickEvent.Listener.Deserializer<?, ?, ?>>> MULTI_TICK_EVENT_LISTENER_DESERIALIZER = create("multi_tick_event_listener_deserializer");
 
 
     private static <T> RegistryKey<Registry<T>> create(String name) {
